@@ -1,0 +1,54 @@
+<div class="card">
+  <!-- Experiencia -->
+  <div id="experience">
+    <div class="card-body">
+      <div class="card-title">
+        <h2>Proyectos</h2>
+        <div class="btn-add" *ngIf="isAdmin">
+          <button
+            class="btn btn-sm btn-success btn-rigth"
+            routerLink="/newexperience"
+          >
+            <i class="bi bi-plus-square"></i>
+          </button>
+        </div>
+      </div>
+      <div id="element-container">
+        <ul class="items-list">
+          <li *ngFor="let logro of achievement">
+            <div class="data-container">
+              <div class="logo-image-container">
+                <img [src]="logro.image" alt="" class="logo-image" />
+              </div>
+              <div class="list-info">
+                <div>
+                  <h5>{{ logro.name }}</h5>
+                  <p>{{ logro.details }}</p>
+                  <p>{{ logro.url }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="data-control" *ngIf="isAdmin">
+              <div class="btn-edit">
+                <button
+                  class="btn btn-sm btn-warning btn-rigth"
+                  [routerLink]="['/editachievement/', logro.id]"
+                >
+                  <i class="bi bi-pencil"></i>
+                </button>
+              </div>
+              <div class="btn-delete">
+                <button
+                  class="btn btn-sm btn-danger btn-rigth"
+                  (click)="deleteAchievement(logro.id)"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

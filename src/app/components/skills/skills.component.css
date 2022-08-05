@@ -1,0 +1,11 @@
+
+
+.card #elem{
+  box-shadow:none;
+}
+
+.card img{
+  width:100px;
+  height: 100px;
+  margin-right: 8px;
+}

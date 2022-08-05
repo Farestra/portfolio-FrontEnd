@@ -1,0 +1,102 @@
+<div class="container">
+  <div class="card m-5">
+    <div class="card-header">
+      <ul class="nav nav-pills card-header-pills">
+        <li class="nav-item">
+          <button class="btn btn-outline-danger" routerLink="/portfolio"><i class="bi bi-escape">Cerrar</i></button>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <div class="card-title">
+        <h1>Editar una entrada en la lista de Experiencia</h1>
+      </div>
+        <form [formGroup]="editExperienceForm" (ngSubmit)="onUpdate()">
+          <div>
+            <label for="position">Posición:</label>
+            <input type="text" id="position" formControlName="position" class="form-control"
+            [ngClass]="{'is-invalid': Position?.errors && Position?.touched, 'is-valid': !Position?.errors && Position?.touched}">
+            <div *ngIf="Position?.invalid && Position?.touched">
+              <p class="text-danger">La Posición  es requerida</p>
+            </div>
+          </div>
+
+          <div>
+            <label for="company">Companía / Institución:</label>
+            <input type="text" id="company" formControlName="company" class="form-control"
+            [ngClass]="{'is-invalid': Company?.errors && Company?.touched, 'is-valid': !Company?.errors && Company?.touched}">
+            <div *ngIf="Company?.invalid && Company?.touched">
+              <p class="text-danger">El campo es requerido</p>
+            </div>
+          </div>
+
+          <div>
+            <label for="image">URL para la imagen:</label>
+            <input type="text" id="image" formControlName="image" class="form-control"
+            [ngClass]="{'is-invalid': Image?.errors && Image?.touched, 'is-valid': !Image?.errors && Image?.touched}">
+            <div *ngIf="Image?.invalid && Image?.touched">
+              <p class="text-danger">La Url es requerida</p>
+            </div>
+          </div>
+
+          <div>
+            <label for="details">Detalles:</label>
+            <input type="text" id="details" formControlName="details" class="form-control"
+            [ngClass]="{'is-invalid': Details?.errors && Details?.touched, 'is-valid': !Details?.errors && Details?.touched}">
+            <div *ngIf="Details?.invalid && Details?.touched">
+              <p class="text-danger">Detalles obligatorio</p>
+            </div>
+          </div>
+          
+          <div>
+            <label for="jobMode">Jornada:</label>
+            <input type="text" id="jobMode" formControlName="jobMode" class="form-control"
+            [ngClass]="{'is-invalid': JobMode?.errors && JobMode?.touched, 'is-valid': !JobMode?.errors && JobMode?.touched}">
+            <div *ngIf="JobMode?.invalid && JobMode?.touched">
+              <p class="text-danger">EL tipo de jornada es requerido</p>
+            </div>
+          </div>
+
+          <div>
+            <label for="startDate">Inicio de la experiencia:</label>
+            <input type="text" id="startDate" formControlName="startDate" class="form-control"
+            [ngClass]="{'is-invalid': StartDate?.errors && StartDate?.touched, 'is-valid': !StartDate?.errors && StartDate?.touched}">
+            <div *ngIf="StartDate?.invalid && StartDate?.touched">
+              <p class="text-danger">La fecha de inicio de la experiencia es requerida</p>
+            </div>
+          </div>
+
+          <div>
+            <label for="endDate">Fin de la experiencia:</label>
+            <input type="text" id="shooendDatel" formControlName="endDate" class="form-control"
+            [ngClass]="{'is-invalid': EndDate?.errors && EndDate?.touched, 'is-valid': !EndDate?.errors && EndDate?.touched}">
+            <div *ngIf="EndDate?.invalid && EndDate?.touched">
+              <p class="text-danger">La fecha de finalización de la experiencia es requerida</p>
+            </div>
+          </div>
+
+          <div>
+            <label for="timeElapsed">Tiempo transcurrido:</label>
+            <input type="text" id="shootimeElapsedl" formControlName="timeElapsed" class="form-control"
+            [ngClass]="{'is-invalid': TimeElapsed?.errors && TimeElapsed?.touched, 'is-valid': !TimeElapsed?.errors && TimeElapsed?.touched}">
+            <div *ngIf="TimeElapsed?.invalid && TimeElapsed?.touched">
+              <p class="text-danger">Tiempo Transcurrido es obligatorio</p>
+            </div>
+          </div>
+
+          <div>
+            <label for="url">URL Entidad:</label>
+            <input type="text" id="url" formControlName="url" class="form-control"
+            [ngClass]="{'is-invalid': Url?.errors && Url?.touched, 'is-valid': !Url?.errors && Url?.touched}">
+            <div *ngIf="Url?.invalid && Url?.touched">
+              <p class="text-danger">Por favor especifique una url para la entidad</p>
+            </div>
+          </div>
+          <p> valid {{editExperienceForm.valid}}</p>
+          <p *ngIf="!editExperienceForm.valid" class="text-danger">Por favor complete correctamente el formulario para poder agregar una nueva Educación</p>
+          <button type="submit" class="btn btn-primary" [disabled]="!editExperienceForm.valid">Editar Experiencia</button>
+        </form>
+
+    </div>
+  </div>
+</div>

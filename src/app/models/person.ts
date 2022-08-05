@@ -1,0 +1,24 @@
+export class Person {
+  id?:number;
+  name:string="";
+  backImg:string="";
+  profileImg:string="";
+  email:string="";
+  location:string="";
+  about:string="";
+  constructor(
+    name:string,
+    backImg:string,
+    profileImg:string,
+    email:string,
+    location:string,
+    about:string
+  ){
+    this.name=name;
+    this.backImg=backImg;
+    this.profileImg=profileImg;
+    this.email=email;
+    this.location=location;
+    this.about=about;
+  }
+}

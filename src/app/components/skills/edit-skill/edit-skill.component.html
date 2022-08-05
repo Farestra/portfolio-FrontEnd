@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="card m-5">
+    <div class="card-header">
+      <ul class="nav nav-pills card-header-pills">
+        <li class="nav-item">
+          <button class="btn btn-outline-danger" routerLink="/portfolio"><i class="bi bi-escape">Cerrar</i></button>
+        </li>
+      </ul>
+    </div>
+      <div class="card-body">
+        <div class="card-title">
+          <h1>Editar una entrada en la lista de Habilidades</h1>
+        </div>
+          <form [formGroup]="editSkillForm" (ngSubmit)="onUpdate()">
+            <div>
+              <label for="name">Nombre de la Habilidad:</label>
+              <input type="text" id="name" formControlName="name" class="form-control"
+              [ngClass]="{'is-invalid': Name?.errors && Name?.touched, 'is-valid': !Name?.errors && Name?.touched}">
+              <div *ngIf="Name?.invalid && Name?.touched">
+                <p class="text-danger">El nombre de la habilidad es requerido/p>
+              </div>
+            </div>
+  
+            <div>
+              <label for="image">URL para la imagen:</label>
+              <input type="text" id="image" formControlName="image" class="form-control"
+              [ngClass]="{'is-invalid': Image?.errors && Image?.touched, 'is-valid': !Image?.errors && Image?.touched}">
+              <div *ngIf="Image?.invalid && Image?.touched">
+                <p class="text-danger">La url para la imagen es requerida</p>
+              </div>
+            </div>
+  
+            <div>
+              <label for="progress">Nivel de progreso en la habilidad:</label>
+              <input type="number" id="progress" formControlName="progress" class="form-control"
+              [ngClass]="{'is-invalid': Progress?.errors && Progress?.touched, 'is-valid': !Progress?.errors && Progress?.touched}">
+              <div *ngIf="Progress?.invalid && Progress?.touched">
+                <p class="text-danger">El progreso es requerido</p>
+              </div>
+            </div>
+  
+            <p *ngIf="!editSkillForm.valid" class="text-danger">Por favor complete correctamente el formulario para poder agregar una nueva Educación</p>
+            <button type="submit" class="btn btn-warning" [disabled]="!editSkillForm.valid">Editar Habilidad</button>
+          </form>
+  
+      </div>
+  </div>
+</div>

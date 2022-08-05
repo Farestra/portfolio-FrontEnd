@@ -1,0 +1,66 @@
+
+/*primera tarjeta */
+.mat-card {
+  border-radius: 32px 32px 5px 5px;
+  margin: 10px 10px;
+  padding: 20px;
+  border-color: #ffffff;
+  /* of-x | of-y | br | sr | color*/
+  box-shadow: 1px 1px 3px 1px rgba(88, 88, 88, 0.5);
+}
+.mat-card#first-card{
+  padding: 0;
+}
+
+
+
+div#profile-background{
+  position: relative;
+  display: flex;
+  z-index: 0;
+}
+
+.background__image {
+  width: 100%;
+  /*cover*/
+  object-fit: cover;
+  text-align: center;
+}
+
+.background__image img{
+  z-index: auto;
+}
+
+div#profile-background img{
+  width: 100%;
+  max-height: 350px;
+  border-radius: 32px 32px 0 0;
+}
+
+/*centrar el btn edit del background*/
+div#profile-background .btn-edit{
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+div#profile-background .btn-edit i{
+  font-size: large;
+}
+
+
+.profile-image{
+  border-radius: 50%;
+  width: 152px;
+  height: 152px;
+  margin-top: -110px;
+  box-shadow: 0px 0px 8px 4px rgba(88, 88, 88, 0.5);
+  background-color: #ffffff;
+}
+
+/*margenes laterales para la tarjeta*/
+.card {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
