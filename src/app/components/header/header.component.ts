@@ -83,7 +83,7 @@ export class HeaderComponent implements OnInit {
   }
 
   deleteCompany(id:number){
-    this.schoolServ.delete(id).subscribe(data=>{
+    this.companyServ.delete(id).subscribe(data=>{
       this.toastr.success("Eliminada correctamente la entrada con id: " + id, 'Ok',{timeOut:3000,positionClass:'toast-top-full-width'});
       this.loadCompanys();
       this.reloadComponent();

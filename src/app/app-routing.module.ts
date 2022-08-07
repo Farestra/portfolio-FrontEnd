@@ -7,6 +7,8 @@ import { EditEducationComponent } from './components/education/edit-education/ed
 import { NewEducationComponent } from './components/education/new-education/new-education.component';
 import { EditExperienceComponent } from './components/experience/edit-experience/edit-experience.component';
 import { NewExperienceComponent } from './components/experience/new-experience/new-experience.component';
+import { EditDetailsComponent } from './components/header/edit-details/edit-details.component';
+import { NewDetailsComponent } from './components/header/new-details/new-details.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
@@ -29,6 +31,9 @@ const routes: Routes = [
   
   { path: 'newachievement', component: NewAchievementComponent, canActivate:[GuardGuard]},
   { path: 'editachievement/:id', component: EditAchievementComponent, canActivate:[GuardGuard]},
+
+  { path: 'newDetails', component: NewDetailsComponent, canActivate:[GuardGuard]},
+  { path: 'editDetails/:id/:param', component: EditDetailsComponent, canActivate:[GuardGuard]},
 
   { path: 'editabout/:param', component: EditAboutComponent, canActivate:[GuardGuard]},
 

@@ -27,6 +27,9 @@ import { NewExperienceComponent } from './components/experience/new-experience/n
 import { NewSkillComponent } from './components/skills/new-skill/new-skill.component';
 import { EditSkillComponent } from './components/skills/edit-skill/edit-skill.component';
 import { ToastrModule } from 'ngx-toastr';
+import { NewDetailsComponent } from './components/header/new-details/new-details.component';
+import { EditDetailsComponent } from './components/header/edit-details/edit-details.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 
 
@@ -51,7 +54,9 @@ import { ToastrModule } from 'ngx-toastr';
     EditExperienceComponent,
     NewExperienceComponent,
     NewSkillComponent,
-    EditSkillComponent
+    EditSkillComponent,
+    NewDetailsComponent,
+    EditDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +66,7 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     FormsModule,
     ToastrModule.forRoot(),
-
+    BrowserAnimationsModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

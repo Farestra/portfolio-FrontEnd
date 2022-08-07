@@ -25,7 +25,7 @@ export class NewAchievementComponent implements OnInit {
     this.newAchievementForm = this.fb.group({
       name:['',Validators.required],
       details:['',Validators.required],
-      image:['',Validators.required],
+      releaseDate:['',Validators.required],
       url:['',Validators.required]
     })
   }
@@ -36,20 +36,20 @@ export class NewAchievementComponent implements OnInit {
 
   get Name(){return this.newAchievementForm.get('name')}
   get Details(){return this.newAchievementForm.get('details')}
-  get Image(){return this.newAchievementForm.get('image')}
+  get ReleaseDate(){return this.newAchievementForm.get('releaseDate')}
   get Url(){return this.newAchievementForm.get('ul')}
 
   onCreate(personid=1):void{
     const {
       name,
       details,
-      image,
+      releaseDate,
       url
     } = this.newAchievementForm.value;
     const achievement=new Achievement(
       name,
       details,
-      image,
+      releaseDate,
       url
     );
     this.achievementServ.save(personid, achievement)

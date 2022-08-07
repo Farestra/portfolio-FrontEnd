@@ -29,7 +29,7 @@ export class EditAchievementComponent implements OnInit {
       this.editAchievementForm = this.fb.group({
         name:[this.achievementUpd.name,Validators.required],
         details:[this.achievementUpd.details,Validators.required],
-        image:[this.achievementUpd.image,Validators.required],
+        releaseDate:[this.achievementUpd.releaseDate,Validators.required],
         url:[this.achievementUpd.url,Validators.required]
       });
     }, err =>{
@@ -41,7 +41,7 @@ export class EditAchievementComponent implements OnInit {
 
   get Name(){return this.editAchievementForm.get('name')}
   get Details(){return this.editAchievementForm.get('details')}
-  get Image(){return this.editAchievementForm.get('image')}
+  get ReleaseDate(){return this.editAchievementForm.get('releaseDate')}
   get Url(){return this.editAchievementForm.get('url')}
 
   onUpdate(personid=1):void{
@@ -49,13 +49,13 @@ export class EditAchievementComponent implements OnInit {
     const {
       name,
       details,
-      image,
+      releaseDate,
       url
     } = this.editAchievementForm.value;
     const achievement=new Achievement(
       name,
       details,
-      image,
+      releaseDate,
       url
     );
     this.achievementServ.update(id, achievement)

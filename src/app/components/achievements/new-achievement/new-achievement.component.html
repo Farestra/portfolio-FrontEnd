@@ -32,11 +32,11 @@
           </div>
 
           <div>
-            <label for="image">URL para la imagen</label>
-            <input type="text" id="image" formControlName="image" class="form-control"
-            [ngClass]="{'is-invalid': Image?.errors && Image?.touched, 'is-valid': !Image?.errors && Image?.touched}">
-            <div *ngIf="Image?.invalid && Image?.touched">
-              <p class="text-danger">La Url es requerida</p>
+            <label for="releaseDate">Fecha de realización</label>
+            <input type="text" id="releaseDate" formControlName="releaseDate" class="form-control"
+            [ngClass]="{'is-invalid': ReleaseDate?.errors && ReleaseDate?.touched, 'is-valid': !ReleaseDate?.errors && ReleaseDate?.touched}">
+            <div *ngIf="ReleaseDate?.invalid && ReleaseDate?.touched">
+              <p class="text-danger">La Fecha del proyecto es requerida</p>
             </div>
           </div>
 

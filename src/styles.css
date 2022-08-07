@@ -122,3 +122,14 @@ button {
 button i{
   font-size: larger;
 }
+.btn-edit button{
+  border-radius: 50%;
+}
+
+.btn-add button{
+  border-radius: 50%;
+}
+
+.btn-delete button{
+  border-radius: 50%;
+}

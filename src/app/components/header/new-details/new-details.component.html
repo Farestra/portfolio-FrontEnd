@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="card m-5" *ngIf="!isCompany">
+    <div class="card-header">
+      <ul class="nav nav-pills card-header-pills">
+        <li class="nav-item">
+          <button class="btn btn-outline-danger" routerLink="/portfolio"><i class="bi bi-escape">Cerrar</i></button>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <div class="card-title">
+        <h1>Agregar Compañía relacionada</h1>
+      </div>
+      <form [formGroup]="newCompanyForm" (ngSubmit)="onCreateC()">
+        <div>
+          <label for="c_name">Nombre de la compañia:</label>
+          <input type="text" id="c_name" formControlName="c_name" class="form-control"
+            [ngClass]="{'is-invalid': cName?.errors && cName?.touched, 'is-valid': !cName?.errors && cName?.touched}">
+          <div *ngIf="cName?.invalid && cName?.touched">
+            <p class="text-danger">El nombre de la compañia es requerido/p>
+          </div>
+        </div>
+
+        <div>
+          <label for="c_image">URL para la imagen:</label>
+          <input type="text" id="c_image" formControlName="c_image" class="form-control"
+            [ngClass]="{'is-invalid': cImage?.errors && cImage?.touched, 'is-valid': !cImage?.errors && cImage?.touched}">
+          <div *ngIf="cImage?.invalid && cImage?.touched">
+            <p class="text-danger">La url para la imagen es requerida</p>
+          </div>
+        </div>
+
+        <div>
+          <label for="c_url">Url para el enlace:</label>
+          <input type="text" id="c_url" formControlName="c_url" class="form-control"
+            [ngClass]="{'is-invalid': cUrl?.errors && cUrl?.touched, 'is-valid': !cUrl?.errors && cUrl?.touched}">
+          <div *ngIf="cUrl?.invalid && cUrl?.touched">
+            <p class="text-danger">La url para el enlace es requerido</p>
+          </div>
+        </div>
+
+        <p *ngIf="!newCompanyForm.valid" class="text-danger">Por favor complete correctamente el formulario</p>
+        <button type="submit" class="btn btn-primary" [disabled]="!newCompanyForm.valid">Agregar Compañía</button>
+      </form>
+
+    </div>
+  </div>
+
+  <div class="card m-5" *ngIf="!isSchool">
+    <div class="card-header">
+      <ul class="nav nav-pills card-header-pills">
+        <li class="nav-item">
+          <button class="btn btn-outline-danger" routerLink="/portfolio"><i class="bi bi-escape">Cerrar</i></button>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <div class="card-title">
+        <h1>Agregar Institución educativa relacionada</h1>
+      </div>
+      <form [formGroup]="newSchoolForm" (ngSubmit)="onCreateS()">
+        <div>
+          <label for="s_name">Nombre de la Institución:</label>
+          <input type="text" id="s_name" formControlName="s_name" class="form-control"
+            [ngClass]="{'is-invalid': sName?.errors && sName?.touched, 'is-valid': !sName?.errors && sName?.touched}">
+          <div *ngIf="sName?.invalid && sName?.touched">
+            <p class="text-danger">El nombre de la Institución es requerido/p>
+          </div>
+        </div>
+
+        <div>
+          <label for="s_image">URL para la imagen:</label>
+          <input type="text" id="s_image" formControlName="s_image" class="form-control"
+            [ngClass]="{'is-invalid': sImage?.errors && sImage?.touched, 'is-valid': !sImage?.errors && sImage?.touched}">
+          <div *ngIf="sImage?.invalid && sImage?.touched">
+            <p class="text-danger">La url para la imagen es requerida</p>
+          </div>
+        </div>
+
+        <div>
+          <label for="s_url">Url para el enlace:</label>
+          <input type="text" id="s_url" formControlName="s_url" class="form-control"
+            [ngClass]="{'is-invalid': sUrl?.errors && sUrl?.touched, 'is-valid': !sUrl?.errors && sUrl?.touched}">
+          <div *ngIf="sUrl?.invalid && sUrl?.touched">
+            <p class="text-danger">La url para el enlace es requerido</p>
+          </div>
+        </div>
+
+        <p *ngIf="!newSchoolForm.valid" class="text-danger">Por favor complete correctamente el formulario</p>
+        <button type="submit" class="btn btn-primary" [disabled]="!newSchoolForm.valid">Agregar Institución</button>
+      </form>
+    </div>
+  </div>
+  <div class="card m-5" *ngIf="(isCompany && isSchool)">
+    <div class="card-body">
+      <h1 class="card-title">
+        <h1>Ambas entradas ya han sido creadas</h1>
+      </h1>
+      <button class="btn btn-outline-danger" routerLink="/portfolio"><i class="bi bi-escape">Cerrar</i></button>
+  </div>
+</div>
