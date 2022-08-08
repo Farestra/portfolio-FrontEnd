@@ -7,7 +7,7 @@ import { School } from '../models/school';
   providedIn: 'root'
 })
 export class SchoolService {
-  url = "http://localhost:8080/api/"
+  url = "https://protected-waters-55845.herokuapp.com/api/"
   constructor(private http:HttpClient) { }
 
   //replicamos los métodos del controller en el back end

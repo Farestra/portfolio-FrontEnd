@@ -7,7 +7,7 @@ import { Achievement } from '../models/achievement';
   providedIn: 'root'
 })
 export class AchievementService {
-  url = "http://localhost:8080/api/"
+  url = "https://protected-waters-55845.herokuapp.com/api/"
   constructor(private http:HttpClient) { }
 
   //replicamos los métodos del controller en el back end

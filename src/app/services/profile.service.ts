@@ -8,7 +8,7 @@ const API_URL="http://localhost:8080/api/"
   providedIn: 'root'
 })
 export class ProfileService {
-  url = "http://localhost:8080/api/"
+  url = "https://protected-waters-55845.herokuapp.com/api/"
   constructor(private http:HttpClient,
     private token:TokenStorageService) { }
 
