@@ -94,7 +94,6 @@
               <p class="text-danger">Si desea inhabilitarla y que no se muestre el enlace, ingrese "none", sin las comillas</p>
             </div>
           </div>
-          <p> valid {{newExperienceForm.valid}}</p>
           <p *ngIf="!newExperienceForm.valid" class="text-danger">Por favor complete correctamente el formulario para poder agregar una nueva Educación</p>
           <button type="submit" class="btn btn-primary" [disabled]="!newExperienceForm.valid">Agregar Experiencia</button>
         </form>

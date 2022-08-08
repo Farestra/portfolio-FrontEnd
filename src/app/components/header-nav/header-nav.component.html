@@ -1,7 +1,8 @@
 <!-- Barra de navegación -->
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
   <div class="container-fluid">
-    <a href="#" class="navbar-brand">
+    <a href="http://www.yoprogramo.org.ar" 
+    class="navbar-brand">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 499.2 150.4" id="" height="28"
         class="d-inline-block align-text-top">
         <path
@@ -21,10 +22,10 @@
         </li>
         <li class="nav-item">
           <button *ngIf="isAdmin" class="btn btn-sm btn-success" type="submit" (click)="logout()">
-            <i class="bi bi-box-arrow-in-right"></i> Logout
+            <i class="bi bi-box-arrow-in-right"></i> Salir
           </button>
           <button *ngIf="!isAdmin" class="btn btn-sm btn-success" type="submit" (click)="login()">
-            <i class="bi bi-box-arrow-in-right"></i> Login as Admin
+            <i class="bi bi-box-arrow-in-right"></i> Ingresar como Administrador
           </button>
         </li>
       </ul>
