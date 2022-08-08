@@ -1,46 +1,57 @@
 <!-- Educación -->
 <div class="card">
   <div id="education">
-      <div class="card-body">
-        <div class="card-title">
-          <h2>Educación</h2>
-          <div class="btn-add" *ngIf="isAdmin">
-              <button class="btn btn-sm btn-success btn-rigth" routerLink="/neweducation">
-                  <i class="bi bi-plus-square"></i>
-              </button>
-          </div>
+    <div class="card-body">
+      <div class="card-title">
+        <h2>Educación</h2>
+        <div class="btn-add" *ngIf="isAdmin">
+          <button
+            class="btn btn-sm btn-success btn-rigth"
+            routerLink="/neweducation"
+          >
+            <i class="bi bi-plus-square"></i>
+          </button>
+        </div>
       </div>
       <div id="element-container">
-          <ul class="items-list">
-              <!-- populamos la lista con un ngFor -->
-              <li *ngFor="let edu of education">
-                  <div class="data-container">
-                          <div class="logo-image-container">
-                              <img [src]="edu.image" alt="" class="logo-image" />
-                          </div>
-                          <div class="list-info">
-                              <div>
-                                  <h3>{{edu.school}}</h3>
-                                  <p>{{edu.career}}</p>
-                                  <p>{{edu.title}}</p>
-                                  <p><time>{{edu.startDate}}</time> - <time>{{edu.endDate}}</time></p>
-                              </div>
-                          </div>
-                  </div>
-                  <div class="data-control" *ngIf="isAdmin">
-                      <div class="btn-edit">
-                          <button class="btn btn-sm btn-warning btn-rigth" [routerLink]="['/editeducation/',edu.id]">
-                              <i class="bi bi-pencil"></i>
-                          </button>
-                      </div>
-                      <div class="btn-delete">
-                          <button  class="btn btn-sm btn-danger btn-rigth" (click)="deleteEducation(edu.id)">
-                              <i class="bi bi-trash"></i>
-                          </button>
-                      </div>
-                  </div>
-              </li>
-          </ul>
+        <ul class="items-list">
+          <li *ngFor="let edu of education">
+            <div class="data-container">
+              <div class="logo-image-container">
+                <img *ngIf="!(edu.image === 'none')" [src]="edu.image" alt="" class="logo-image" />
+              </div>
+              <div class="list-info">
+                <div>
+                  <h3>{{ edu.school }}</h3>
+                  <p>{{ edu.career }}</p>
+                  <p>{{ edu.title }}</p>
+                  <p>
+                    <time>{{ edu.startDate }}</time> -
+                    <time>{{ edu.endDate }}</time>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="data-control" *ngIf="isAdmin">
+              <div class="btn-edit">
+                <button
+                  class="btn btn-sm btn-warning btn-rigth"
+                  [routerLink]="['/editeducation/', edu.id]"
+                >
+                  <i class="bi bi-pencil"></i>
+                </button>
+              </div>
+              <div class="btn-delete">
+                <button
+                  class="btn btn-sm btn-danger btn-rigth"
+                  (click)="deleteEducation(edu.id)"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

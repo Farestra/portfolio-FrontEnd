@@ -3,7 +3,9 @@
     <div class="card-header">
       <ul class="nav nav-pills card-header-pills">
         <li class="nav-item">
-          <button class="btn btn-outline-danger" routerLink="/portfolio"><i class="bi bi-escape">Cerrar</i></button>
+          <button class="btn btn-outline-danger" routerLink="/portfolio">
+            <i class="bi bi-escape">Cerrar</i>
+          </button>
         </li>
       </ul>
     </div>
@@ -12,75 +14,144 @@
         <h1>Editar una entrada en la lista de Educación</h1>
       </div>
       <div class="card-body">
-  
-          <form [formGroup]="editEducationForm" (ngSubmit)="onUpdate()">
-  
-            <div>
-              <label for="school">Nombre de la Institución educativa</label>
-              <input type="text" id="school" formControlName="school" class="form-control"
-              [ngClass]="{'is-invalid': School?.errors && School?.touched, 'is-valid': !School?.errors && School?.touched}">
-              <div *ngIf="School?.invalid && School?.touched">
-                <p class="text-danger">La insitución educativa es requerida</p>
-              </div>
+        <form [formGroup]="editEducationForm" (ngSubmit)="onUpdate()">
+          <div>
+            <label for="school">Nombre de la Institución educativa</label>
+            <input
+              type="text"
+              id="school"
+              formControlName="school"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid': School?.errors && School?.touched,
+                'is-valid': !School?.errors && School?.touched
+              }"
+            />
+            <div *ngIf="School?.invalid && School?.touched">
+              <p class="text-danger">La insitución educativa es requerida</p>
             </div>
-  
-            <div>
-              <label for="title">Título Obtenido</label>
-              <input type="text" id="title" formControlName="title" class="form-control"
-              [ngClass]="{'is-invalid': Title?.errors && Title?.touched, 'is-valid': !Title?.errors && Title?.touched}">
-              <div *ngIf="Title?.invalid && Title?.touched">
-                <p class="text-danger">El título obtenido es requerido</p>
-              </div>
+          </div>
+
+          <div>
+            <label for="title">Título Obtenido</label>
+            <input
+              type="text"
+              id="title"
+              formControlName="title"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid': Title?.errors && Title?.touched,
+                'is-valid': !Title?.errors && Title?.touched
+              }"
+            />
+            <div *ngIf="Title?.invalid && Title?.touched">
+              <p class="text-danger">El título obtenido es requerido</p>
             </div>
-  
-            <div>
-              <label for="image">URL para la imagen de la Institución</label>
-              <input type="text" id="image" formControlName="image" class="form-control"
-              [ngClass]="{'is-invalid': Image?.errors && Image?.touched, 'is-valid': !Image?.errors && Image?.touched}">
-              <div *ngIf="Image?.invalid && Image?.touched">
-                <p class="text-danger">La Url para la imagen de la Institución es requerida</p>
-              </div>
+          </div>
+
+          <div>
+            <label for="image">URL para la imagen de la Institución</label>
+            <input
+              type="text"
+              id="image"
+              formControlName="image"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid': Image?.errors && Image?.touched,
+                'is-valid': !Image?.errors && Image?.touched
+              }"
+            />
+            <div *ngIf="Image?.invalid && Image?.touched">
+              <p class="text-danger">
+                La Url para la imagen de la Institución es requerida
+              </p>
+              <p class="text-danger">Si desea inhabilitarla y que no se muestre la imagen, ingrese "none", sin las comillas</p>
             </div>
-  
-            <div>
-              <label for="career">Carrera</label>
-              <input type="text" id="career" formControlName="career" class="form-control"
-              [ngClass]="{'is-invalid': Career?.errors && Career?.touched, 'is-valid': !Career?.errors && Career?.touched}">
-              <div *ngIf="Career?.invalid && Career?.touched">
-                <p class="text-danger">La Carrera es requerida</p>
-              </div>
+          </div>
+
+          <div>
+            <label for="career">Carrera</label>
+            <input
+              type="text"
+              id="career"
+              formControlName="career"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid': Career?.errors && Career?.touched,
+                'is-valid': !Career?.errors && Career?.touched
+              }"
+            />
+            <div *ngIf="Career?.invalid && Career?.touched">
+              <p class="text-danger">La Carrera es requerida</p>
             </div>
-  
-            <div>
-              <label for="score">Promedio obtenido</label>
-              <input type="number" id="score" formControlName="score" class="form-control"
-              [ngClass]="{'is-invalid': Score?.errors && Score?.touched, 'is-valid': !Score?.errors && Score?.touched}">
-              <div *ngIf="Score?.invalid && Score?.touched">
-                <p class="text-danger">El punteje es requerido</p>
-              </div>
+          </div>
+
+          <div>
+            <label for="score">Promedio obtenido</label>
+            <input
+              type="number"
+              id="score"
+              formControlName="score"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid': Score?.errors && Score?.touched,
+                'is-valid': !Score?.errors && Score?.touched
+              }"
+            />
+            <div *ngIf="Score?.invalid && Score?.touched">
+              <p class="text-danger">El punteje es requerido</p>
             </div>
-  
-            <div>
-              <label for="startDate">Inicio de la carrera</label>
-              <input type="text" id="startDate" formControlName="startDate" class="form-control"
-              [ngClass]="{'is-invalid': StartDate?.errors && StartDate?.touched, 'is-valid': !StartDate?.errors && StartDate?.touched}">
-              <div *ngIf="StartDate?.invalid && StartDate?.touched">
-                <p class="text-danger">La fecha de inicio de la carrera es requerida</p>
-              </div>
+          </div>
+
+          <div>
+            <label for="startDate">Inicio de la carrera</label>
+            <input
+              type="text"
+              id="startDate"
+              formControlName="startDate"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid': StartDate?.errors && StartDate?.touched,
+                'is-valid': !StartDate?.errors && StartDate?.touched
+              }"
+            />
+            <div *ngIf="StartDate?.invalid && StartDate?.touched">
+              <p class="text-danger">
+                La fecha de inicio de la carrera es requerida
+              </p>
             </div>
-  
-            <div>
-              <label for="EndDate">Fin de la carrera</label>
-              <input type="text" id="shooEndDatel" formControlName="EndDate" class="form-control"
-              [ngClass]="{'is-invalid': EndDate?.errors && EndDate?.touched, 'is-valid': !EndDate?.errors && EndDate?.touched}">
-              <div *ngIf="EndDate?.invalid && EndDate?.touched">
-                <p class="text-danger">La fecha de finalización de la carrera es requerida</p>
-              </div>
+          </div>
+
+          <div>
+            <label for="EndDate">Fin de la carrera</label>
+            <input
+              type="text"
+              id="shooEndDatel"
+              formControlName="EndDate"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid': EndDate?.errors && EndDate?.touched,
+                'is-valid': !EndDate?.errors && EndDate?.touched
+              }"
+            />
+            <div *ngIf="EndDate?.invalid && EndDate?.touched">
+              <p class="text-danger">
+                La fecha de finalización de la carrera es requerida
+              </p>
             </div>
-            <p *ngIf="!editEducationForm.valid" class="text-danger">Por favor complete correctamente el formulario para poder agregar una nueva Educación</p>
-            <button type="submit" class="btn btn-warning" [disabled]="!editEducationForm.valid">Editar Educación</button>
-          </form>
-  
+          </div>
+          <p *ngIf="!editEducationForm.valid" class="text-danger">
+            Por favor complete correctamente el formulario para poder agregar
+            una nueva Educación
+          </p>
+          <button
+            type="submit"
+            class="btn btn-warning"
+            [disabled]="!editEducationForm.valid"
+          >
+            Editar Educación
+          </button>
+        </form>
       </div>
     </div>
   </div>

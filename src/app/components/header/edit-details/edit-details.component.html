@@ -1,6 +1,3 @@
-<p>edit-details works!</p>
-<p>params {{param}} {{id}}</p>
-
 <div class="container">
   <div class="card m-5" [hidden]="!(param === 'company')">
     <div class="card-header">
@@ -30,6 +27,7 @@
             [ngClass]="{'is-invalid': cImage?.errors && cImage?.touched, 'is-valid': !cImage?.errors && cImage?.touched}">
           <div *ngIf="cImage?.invalid && cImage?.touched">
             <p class="text-danger">La url para la imagen es requerida</p>
+            <p class="text-danger">Si desea inhabilitarla y que no se muestre, ingrese "none", sin las comillas</p>
           </div>
         </div>
 
@@ -39,6 +37,7 @@
             [ngClass]="{'is-invalid': cUrl?.errors && cUrl?.touched, 'is-valid': !cUrl?.errors && cUrl?.touched}">
           <div *ngIf="cUrl?.invalid && cUrl?.touched">
             <p class="text-danger">La url para el enlace es requerido</p>
+            <p class="text-danger">Si desea inhabilitarla y que no se muestre el enlace, ingrese "none", sin las comillas</p>
           </div>
         </div>
 
@@ -78,6 +77,7 @@
             [ngClass]="{'is-invalid': sImage?.errors && sImage?.touched, 'is-valid': !sImage?.errors && sImage?.touched}">
           <div *ngIf="sImage?.invalid && sImage?.touched">
             <p class="text-danger">La url para la imagen es requerida</p>
+            <p class="text-danger">Si desea inhabilitarla y que no se muestre, ingrese "none", sin las comillas</p>
           </div>
         </div>
 
@@ -87,6 +87,7 @@
             [ngClass]="{'is-invalid': sUrl?.errors && sUrl?.touched, 'is-valid': !sUrl?.errors && sUrl?.touched}">
           <div *ngIf="sUrl?.invalid && sUrl?.touched">
             <p class="text-danger">La url para el enlace es requerido</p>
+            <p class="text-danger">Si desea inhabilitarla y que no se muestre el enlace, ingrese "none", sin las comillas</p>
           </div>
         </div>
 

@@ -3,7 +3,9 @@
     <div class="card-header">
       <ul class="nav nav-pills card-header-pills">
         <li class="nav-item">
-          <button class="btn btn-outline-danger" routerLink="/portfolio"><i class="bi bi-escape">Cerrar</i></button>
+          <button class="btn btn-outline-danger" routerLink="/portfolio">
+            <i class="bi bi-escape">Cerrar</i>
+          </button>
         </li>
       </ul>
     </div>
@@ -14,71 +16,124 @@
       <form [formGroup]="profileForm" (ngSubmit)="onUpdate()">
         <div [hidden]="!(param === 'name')">
           <label for="name">Nombre:</label>
-          <input type="text" id="name" formControlName="name" class="form-control"
-            [ngClass]="{'is-invalid': Name?.errors && Name?.touched, 'is-valid': !Name?.errors && Name?.touched}">
+          <input
+            type="text"
+            id="name"
+            formControlName="name"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': Name?.errors && Name?.touched,
+              'is-valid': !Name?.errors && Name?.touched
+            }"
+          />
 
           <div *ngIf="Name?.invalid && Name?.touched">
             <p class="text-danger">El Nombre es requerido</p>
           </div>
         </div>
 
-
         <div [hidden]="!(param === 'backImg')">
           <label for="backImg">URL para la imagen de fondo</label>
-          <input type="text" id="backImg" formControlName="backImg" class="form-control"
-            [ngClass]="{'is-invalid': BackImg?.errors && BackImg?.touched, 'is-valid': !BackImg?.errors && BackImg?.touched}">
+          <input
+            type="text"
+            id="backImg"
+            formControlName="backImg"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': BackImg?.errors && BackImg?.touched,
+              'is-valid': !BackImg?.errors && BackImg?.touched
+            }"
+          />
 
           <div *ngIf="BackImg?.invalid && BackImg?.touched">
             <p class="text-danger">La Url de la imagen de fondo es requerida</p>
           </div>
         </div>
 
-
         <div [hidden]="!(param === 'profileImg')">
           <label for="profileImg">URL para la imagen de perfil</label>
-          <input type="text" id="profileImg" formControlName="profileImg" class="form-control"
-            [ngClass]="{'is-invalid': ProfileImg?.errors && ProfileImg?.touched, 'is-valid': !ProfileImg?.errors && ProfileImg?.touched}">
+          <input
+            type="text"
+            id="profileImg"
+            formControlName="profileImg"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': ProfileImg?.errors && ProfileImg?.touched,
+              'is-valid': !ProfileImg?.errors && ProfileImg?.touched
+            }"
+          />
 
           <div *ngIf="ProfileImg?.invalid && ProfileImg?.touched">
-            <p class="text-danger">La Url para la imagen de perfil es requerida</p>
+            <p class="text-danger">
+              La Url para la imagen de perfil es requerida
+            </p>
           </div>
         </div>
 
         <div [hidden]="!(param === 'name')">
           <label for="email">Email de contacto</label>
-          <input type="text" id="email" formControlName="email" class="form-control"
-            [ngClass]="{'is-invalid': Email?.errors && Email?.touched, 'is-valid': !Email?.errors && Email?.touched}">
+          <input
+            type="text"
+            id="email"
+            formControlName="email"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': Email?.errors && Email?.touched,
+              'is-valid': !Email?.errors && Email?.touched
+            }"
+          />
 
           <div *ngIf="Email?.invalid && Email?.touched">
             <p class="text-danger">El email de contacto es requerido</p>
           </div>
         </div>
 
-
         <div [hidden]="!(param === 'name')">
           <label for="location">Ubicación</label>
-          <input type="text" id="location" formControlName="location" class="form-control"
-            [ngClass]="{'is-invalid': Location?.errors && Location?.touched, 'is-valid': !Location?.errors && Location?.touched}">
+          <input
+            type="text"
+            id="location"
+            formControlName="location"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': Location?.errors && Location?.touched,
+              'is-valid': !Location?.errors && Location?.touched
+            }"
+          />
 
           <div *ngIf="Location?.invalid && Location?.touched">
             <p class="text-danger">La Ubicación es requerida</p>
           </div>
         </div>
 
-
         <div [hidden]="!(param === 'about')">
           <label for="about">Acerca de:</label>
-          <input type="text" id="about" formControlName="about" class="form-control"
-            [ngClass]="{'is-invalid': About?.errors && About?.touched, 'is-valid': !About?.errors && About?.touched}">
+          <input
+            type="text"
+            id="about"
+            formControlName="about"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': About?.errors && About?.touched,
+              'is-valid': !About?.errors && About?.touched
+            }"
+          />
 
           <div *ngIf="About?.invalid && About?.touched">
             <p class="text-danger">La entrada de "Acerca de:" es requerida</p>
           </div>
         </div>
 
-        <p *ngIf="!profileForm.valid" class="text-danger">Por favor complete correctamente el formulario para poder
-          agregar una nueva Educación</p>
-        <button type="submit" class="btn btn-warning" [disabled]="!profileForm.valid">Editar Perfil</button>
+        <p *ngIf="!profileForm.valid" class="text-danger">
+          Por favor complete correctamente el formulario
+        </p>
+        <button
+          type="submit"
+          class="btn btn-warning"
+          [disabled]="!profileForm.valid"
+        >
+          Editar Perfil
+        </button>
       </form>
     </div>
   </div>

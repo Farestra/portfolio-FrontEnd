@@ -1,104 +1,96 @@
 <!-- Contenido -->
 <div class="card mat-card" id="first-card">
-  <div id="profile-background">
-    <div class="btn-edit" id="btn-edit-img-background" *ngIf="isAdmin">
-      <button
-        class="btn btn-sm btn-warning btn-right"
-        [routerLink]="['/editabout/', 'backImg']"
-      >
-        <i class="bi bi-pencil"></i>
-      </button>
-    </div>
-    <img class="background__image" [src]="miPortfolio.backImg" alt="" />
-  </div>
-  <!-- contenedor inferior -->
-  <div id="info" style="padding: 16px">
-    <!-- imgaen de perfil -->
-    <div id="info-img">
-      <div class="btn-edit" id="btn-edit-img-profile" *ngIf="isAdmin">
-        <button
-          class="btn btn-sm btn-warning btn-right"
-          [routerLink]="['/editabout/', 'profileImg']"
-        >
-          <i class="bi bi-pencil"></i>
-        </button>
-      </div>
-      <img [src]="miPortfolio.profileImg" alt="" class="profile-image" />
-    </div>
-    <!-- contenedor de la información -->
-    <div id="info-data">
-      <div>
-        <h1>{{ miPortfolio.name }}</h1>
-        <div id="info-company">{{ miPortfolio.location }}</div>
-        <div id="info-contact">
-          <span>{{ miPortfolio.ubication }}</span>
-          <span>Información de Contacto: </span>
-          <span>{{ miPortfolio.email }}</span>
+
+    <div id="profile-background">
+        <div class="btn-edit" id="btn-edit-img-background" *ngIf="isAdmin">
+            <button class="btn btn-sm btn-warning btn-right" [routerLink]="['/editabout/','backImg']"><i
+                    class="bi bi-pencil"></i></button>
         </div>
-        <div class="data-control" *ngIf="isAdmin">
-          <div class="btn-edit">
-            <button
-              class="btn btn-sm btn-warning btn-rigth"
-              [routerLink]="['/editabout/', 'name']"
-            >
-              <i class="bi bi-pencil"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-      <ul id="info-details">
-        <li *ngFor="let school of schools">
-          <div class="container">
-            <a [href]="school.url">
-              <img [src]="school.image" alt="" />
-              <h2>{{ school.name }}</h2>
-            </a>
-            <div class="data-control d-flex" *ngIf="isAdmin">
-              <div class="btn-edit">
-                <button class="btn btn-sm btn-warning btn-rigth">
-                  <i class="bi bi-pencil" [routerLink]="['/editDetails/', school.id, 'school']"></i>
-                </button>
-              </div>
-              <div class="btn-delete">
-                <button
-                  class="btn btn-sm btn-danger btn-rigth"
-                  (click)="deleteSchool(school.id)"
-                >
-                  <i class="bi bi-trash"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li *ngFor="let company of companys">
-          <div class="container">
-            <a [href]="company.url">
-              <img [src]="company.image" alt="" />
-              <h2>{{ company.name }}</h2>
-            </a>
-            <div class="data-control d-flex" *ngIf="isAdmin">
-              <div class="btn-edit" [routerLink]="['/editDetails/', company.id, 'company']">
-                <button class="btn btn-sm btn-warning btn-rigth">
-                  <i class="bi bi-pencil"></i>
-                </button>
-              </div>
-              <div class="btn-delete">
-                <button
-                  class="btn btn-sm btn-danger btn-rigth"
-                  (click)="deleteCompany(company.id)"
-                >
-                  <i class="bi bi-trash"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-      <div class="btn-add" *ngIf="isAdmin" routerLink="/newDetails">
-        <button class="btn btn-sm btn-success btn-rigth">
-          <i class="bi bi-plus-square"></i>
-        </button>
-      </div>
+        <img class="background__image" [src]="miPortfolio.backImg" alt="" />
     </div>
-  </div>
+    <!-- contenedor inferior -->
+    <div id="info" style="padding: 16px">
+        <!-- imgaen de perfil -->
+        <div id="info-img">
+            <div class="btn-edit" id="btn-edit-img-profile" *ngIf="isAdmin">
+                <button class="btn btn-sm btn-warning btn-right" [routerLink]="['/editabout/','profileImg']"><i
+                        class="bi bi-pencil"></i></button>
+            </div>
+            <img [src]="miPortfolio.profileImg" alt="" class="profile-image" />
+        </div>
+        <!-- contenedor de la información -->
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-7">
+                <div id="info-data">
+                    <div>
+                        <h1>{{miPortfolio.name}}</h1>
+                        <div id="info-company">{{miPortfolio.location}}</div>
+                        <div id="info-contact">
+                            <span>{{miPortfolio.ubication}}</span>
+                            <span>Información de Contacto: </span>
+                            <span>{{miPortfolio.email}}</span>
+                        </div>
+                        <div class="data-control" *ngIf="isAdmin">
+                            <div class="btn-edit">
+                                <button class="btn btn-sm btn-warning btn-rigth" [routerLink]="['/editabout/','name']">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div *ngFor="let school of schools" class="row">
+                    <div class="col d-flex">
+                        <img *ngIf="!(school.image==='none')" [src]="school.image" alt="" style="width: 32px; height: 32px; margin-right: 8px;"/>
+                        <p>{{school.name}}</p>
+                        <a *ngIf="!(school.url==='none')"[href]="school.url" class="link"><strong><i class="bi bi-link-45deg"></i></strong>Link</a>
+                        <div class="data-control d-flex" *ngIf="isAdmin">
+                            <div class="btn-edit">
+                                <button class="btn btn-sm btn-warning btn-rigth"  [routerLink]="['/editDetails/', school.id, 'school']">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                            </div>
+                            <div class="btn-delete">
+                                <button class="btn btn-sm btn-danger btn-rigth" (click)="deleteSchool(school.id)">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngFor="let company of companys" class="row">
+                    <div class="col">
+                        <div class="col d-flex">
+                            <img *ngIf="!(company.image==='none')" [src]="company.image" alt="" style="width: 32px; height: 32px; margin-right: 8px;"/>
+                            <p>{{company.name}}</p>
+                            <a *ngIf="!(company.url==='none')"[href]="company.url" class="link"><strong><i class="bi bi-link-45deg"></i></strong>Link</a>
+                            <div class="data-control d-flex" *ngIf="isAdmin">
+                                <div class="btn-edit">
+                                    <button class="btn btn-sm btn-warning btn-rigth" [routerLink]="['/editDetails/', company.id, 'company']">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-delete">
+                                    <button class="btn btn-sm btn-danger btn-rigth" (click)="deleteCompany(company.id)">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="btn-add" *ngIf="isAdmin">
+                    <button class="btn btn-sm btn-success btn-rigth" routerLink="/newDetails">
+                        <i class="bi bi-plus-square"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

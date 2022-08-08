@@ -56,8 +56,8 @@ export class EditDetailsComponent implements OnInit {
       this.obtainS(this.id);
     } else {
       this.ruta.navigate(['**'])
-      this.toastr.error("Ha ocurrido un error, no se puede capturar el parámetro", 'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      console.log('no se puede capturar el parámetro' )
+      this.toastr.error("Ha ocurrido un error, no se puede capturar el parámetro para la ruta: " + this.activRouter, 'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
+      console.log('no se puede capturar el parámetro: valor: ' + this.param + ' id: ' + this.id )
     }
     console.log('El id obtenido es: '+ this.id + ' El parámetro obtenido es: ' + this.param);
   }

@@ -36,6 +36,7 @@
             [ngClass]="{'is-invalid': Image?.errors && Image?.touched, 'is-valid': !Image?.errors && Image?.touched}">
             <div *ngIf="Image?.invalid && Image?.touched">
               <p class="text-danger">La Url es requerida</p>
+              <p class="text-danger">Si desea inhabilitarla y que no se muestre la imagen, ingrese "none", sin las comillas</p>
             </div>
           </div>
 
@@ -90,6 +91,7 @@
             [ngClass]="{'is-invalid': Url?.errors && Url?.touched, 'is-valid': !Url?.errors && Url?.touched}">
             <div *ngIf="Url?.invalid && Url?.touched">
               <p class="text-danger">Por favor especifique una url para la entidad</p>
+              <p class="text-danger">Si desea inhabilitarla y que no se muestre el enlace, ingrese "none", sin las comillas</p>
             </div>
           </div>
           <p> valid {{newExperienceForm.valid}}</p>

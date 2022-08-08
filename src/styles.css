@@ -48,29 +48,24 @@ div#info-data h1{
   word-wrap: break-word;
   word-break: break-all;
 }
-div#info-data ul#info-details{
+ul#info-details{
   width: 250px;
   list-style: none;
   flex-shrink: 0;
 }
-div#info-data ul#info-details li a {
+ul#info-details li a {
   color: black;
   display: flex;
   text-decoration: none;
 }
-div#info-data ul#info-details li a h2{
+ul#info-details li a h2{
   font-size: 1rem;
   font-weight: 500;
   align-self: center;
   vertical-align: baseline;
 }
-div#info-data ul#info-details li a img{
-  width: 32px;
-  height: 32px;
-  margin-right: 8px;
-}
 
-div#info-data ul#info-details li .data-control a {
+ul#info-details li .data-control a {
   color: white;
 }
 
@@ -119,9 +114,7 @@ ul.items-list li div.data-container p{
 button {
   margin: 3px 3px 3px 3px;
 }
-button i{
-  font-size: larger;
-}
+
 .btn-edit button{
   border-radius: 50%;
 }
