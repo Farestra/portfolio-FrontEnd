@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Person } from '../models/person';
 import { TokenStorageService } from './auth/token-storage.service';
-const API_URL="http://localhost:8080/api/"
+const API_URL="https://protected-waters-55845.herokuapp.com/api/"
 @Injectable({
   providedIn: 'root'
 })
