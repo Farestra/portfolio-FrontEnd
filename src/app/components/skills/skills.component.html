@@ -14,7 +14,7 @@
         <div class="col-md-4" *ngFor="let skill of skills">
           <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-200 h-100 position-relative">
             <div class="col-auto d-none d-lg-block" *ngIf="!(skill.image==='none')">
-              <img [src]="skill.image" alt="" class="logo-image h-100" style="background-color:slategray" width="200"/>
+              <img [src]="skill.image" alt="" class="logo-image h-100" width="200"/>
             </div>
             <div class="col p-4 d-flex flex-column position-static">
               <h4 class="mb-0">{{skill.name}}</h4>
