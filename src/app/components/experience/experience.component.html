@@ -23,8 +23,8 @@
               <p class="card-text mb-auto">{{Experience.details}}</p>
               <a [href]="Experience.url" class="link"><strong><i class="bi bi-link-45deg"></i></strong>Link</a>
             </div>
-            <div class="col-auto d-none d-lg-block">
-              <div class="data-control" *ngIf="isAdmin">
+            <div class="col-auto">
+              <div class="data-control d-flex" *ngIf="isAdmin">
                 <div class="btn-edit">
                   <button class="btn btn-sm btn-warning btn-rigth" [routerLink]="['/editexperience/',Experience.id]">
                     <i class="bi bi-pencil"></i>

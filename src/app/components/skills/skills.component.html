@@ -9,53 +9,42 @@
         </button>
       </div>
     </div>
-    
-    <div class="container">
-      <div class="row text-center row-cols-1 row-cols-md-3 g-4">
-        <div *ngFor="let skill of skills" class="col text-center">
-          <div class="card h-100 d-flex justify-content-center" id="elem">
-            <div class="card-body">
-              <img *ngIf="!(skill.image === 'none')" [src]="skill.image" class="card-img-top" alt="" />
-              <div class="card-body align-items-center justify-content-center">
-                <h3 class="card-title">{{ skill.name }}</h3>
-                <div class="progress">
-                  <div
-                    class="progress-bar progress-bar-striped"
-                    role="progressbar"
-                    style="width: {{ skill.progress }}%"
-                    attr.aria-valuenow="{{ skill.progress }}"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-                <p></p>
+    <div class="containe">
+      <div class="row mb-2">
+        <div class="col-md-4" *ngFor="let skill of skills">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-200 h-100 position-relative">
+            <div class="col-auto d-none d-lg-block" *ngIf="!(skill.image==='none')">
+              <img [src]="skill.image" alt="" class="logo-image h-100" style="background-color:slategray" width="200"/>
+            </div>
+            <div class="col p-4 d-flex flex-column position-static">
+              <h4 class="mb-0">{{skill.name}}</h4>
+              <div class="progress">
                 <div
-                  class="data-control"
-                  style="display: flex; justify-content: center"
-                >
-                  <div class="hstack gap-3" *ngIf="isAdmin">
-                    <div class="btn-edit">
-                      <button
-                        class="btn btn-sm btn-warning"
-                        [routerLink]="['/editskill/', skill.id]"
-                      >
-                        <i class="bi bi-pencil"></i>
-                      </button>
-                    </div>
-                    <div class="btn-delete">
-                      <button
-                        class="btn btn-sm btn-danger"
-                        (click)="deleteSkill(skill.id)"
-                      >
-                        <i class="bi bi-trash"></i>
-                      </button>
-                    </div>
-                  </div>
+                  class="progress-bar progress-bar-striped"
+                  role="progressbar"
+                  style="width: {{ skill.progress }}%"
+                  attr.aria-valuenow="{{ skill.progress }}"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+            <div class="col-auto d-lg-block">
+              <div class="data-control" *ngIf="isAdmin">
+                <div class="btn-edit">
+                  <button class="btn btn-sm btn-warning btn-rigth" [routerLink]="['/editskill/',skill.id]">
+                    <i class="bi bi-pencil"></i>
+                  </button>
+                </div>
+                <div class="btn-delete">
+                  <button class="btn btn-sm btn-danger btn-rigth" (click)="deleteSkill(skill.id)">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 </div>
