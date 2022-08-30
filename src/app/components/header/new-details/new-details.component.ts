@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CompanyService } from 'src/app/services/company.service';
 import { SchoolService } from 'src/app/services/school.service';
-import { ToastrService } from 'ngx-toastr';
 import { School } from 'src/app/models/school';
 import { Company } from 'src/app/models/company';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-details',
@@ -24,8 +24,7 @@ export class NewDetailsComponent implements OnInit {
     private fb:FormBuilder,
     private schoolsv:SchoolService,
     private companysv:CompanyService,
-    private ruta:Router,
-    private toastr:ToastrService
+    private ruta:Router
   ) { 
     this.newSchoolForm = this.fb.group(
       {
@@ -87,10 +86,21 @@ export class NewDetailsComponent implements OnInit {
     );
     this.schoolsv.save(personid, school)
     .subscribe(data=>{
-      this.toastr.success("Entrada creada correctamente",'OK',{timeOut:3000,positionClass:'toast-top-full-width'});
+      Swal.fire({
+        icon: 'success',
+        text: 'Creado correctamente',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.ruta.navigate(['portfolio']);
     }, err =>{
-      this.toastr.error("Ha ocurrido un error",'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
+      Swal.fire({
+        icon: 'error',
+        title: 'Ha ocurrido un error',
+        text:'' + err.error.message,
+        showConfirmButton: false,
+        timer: 1500
+      });
       console.log(err.error.message);
       this.ruta.navigate(['portfolio']);
     });
@@ -109,11 +119,21 @@ export class NewDetailsComponent implements OnInit {
     );
     this.companysv.save(personid, company)
     .subscribe(data=>{
-      this.toastr.success("Entrada creada correctamente",'OK',{timeOut:3000,positionClass:'toast-top-full-width'});
+      Swal.fire({
+        icon: 'success',
+        text: 'Creado correctamente',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.ruta.navigate(['portfolio']);
     }, err =>{
-      this.toastr.error("Ha ocurrido un error",'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      //console.log(err.error.message);
+      Swal.fire({
+        icon: 'error',
+        title: 'Ha ocurrido un error',
+        text:'' + err.error.message,
+        showConfirmButton: false,
+        timer: 1500
+      });
       this.ruta.navigate(['portfolio']);
     });
   }

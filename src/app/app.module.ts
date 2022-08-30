@@ -26,7 +26,6 @@ import { EditExperienceComponent } from './components/experience/edit-experience
 import { NewExperienceComponent } from './components/experience/new-experience/new-experience.component';
 import { NewSkillComponent } from './components/skills/new-skill/new-skill.component';
 import { EditSkillComponent } from './components/skills/edit-skill/edit-skill.component';
-import { ToastrModule } from 'ngx-toastr';
 import { NewDetailsComponent } from './components/header/new-details/new-details.component';
 import { EditDetailsComponent } from './components/header/edit-details/edit-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -65,12 +64,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule,
-    ToastrModule.forRoot({
-      timeOut: 10000,
-      positionClass: 'toast-bottom-right',
-      preventDuplicates: true,
-    })
+    FormsModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

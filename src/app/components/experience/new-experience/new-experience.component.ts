@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Experience } from 'src/app/models/experience';
-import { ToastrService } from 'ngx-toastr'
 import { ExperienceService } from 'src/app/services/experience.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-experience',
@@ -16,8 +16,7 @@ export class NewExperienceComponent implements OnInit {
   constructor(
     private experienceServ:ExperienceService,
     private ruta:Router,
-    private fb:FormBuilder,
-    private toastr:ToastrService
+    private fb:FormBuilder
   ) { 
     this.newExperienceForm = this.fb.group({
       position:['',Validators.required],
@@ -71,11 +70,21 @@ export class NewExperienceComponent implements OnInit {
     );
     this.experienceServ.save(personid, experience)
     .subscribe(data=>{
-      this.toastr.success("Experiencia creada correctamente",'OK',{timeOut:3000,positionClass:'toast-top-full-width'});
+      Swal.fire({
+        icon: 'success',
+        text: 'Creado correctamente',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.ruta.navigate(['portfolio']);
     }, err =>{
-      this.toastr.error("Ha ocurrido un error",'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      //console.log(err.error.message);
+      Swal.fire({
+        icon: 'error',
+        title: 'Ha ocurrido un error',
+        text:'' + err.error.message,
+        showConfirmButton: false,
+        timer: 1500
+      });
       this.ruta.navigate(['portfolio']);
     });
   }

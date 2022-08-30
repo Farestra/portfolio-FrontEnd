@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from 'src/app/services/profile.service';
-import { ToastrService } from 'ngx-toastr';
 import { Person } from 'src/app/models/person';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-about',
@@ -26,7 +26,6 @@ export class EditAboutComponent implements OnInit {
   constructor(
     private fb:FormBuilder,
     private profileServ:ProfileService,
-    private toastr:ToastrService,
     private ruta:Router,
     private activRouter:ActivatedRoute
   ) { 
@@ -49,9 +48,14 @@ export class EditAboutComponent implements OnInit {
         about:this.acercade.about
       })
     }, err =>{
-      this.toastr.error("Ha ocurrido un error ", 'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      //console.log(err.error.messages);
-    } )
+      Swal.fire({
+        icon: 'error',
+        title: 'Ha ocurrido un error',
+        text:'' + err.error.message,
+        showConfirmButton: false,
+        timer: 1500
+      });
+    })
   
   }
 
@@ -81,11 +85,21 @@ export class EditAboutComponent implements OnInit {
       );
       this.profileServ.update(personid, person)
       .subscribe(data=>{
-        this.toastr.success("Elemento del perfil actualizado correctamente",'OK',{timeOut:3000,positionClass:'toast-top-full-width'});
+        Swal.fire({
+          icon: 'success',
+          text: 'Actualizado Correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
         this.ruta.navigate(['portfolio'])
       }, err =>{
-        this.toastr.error("Ha ocurrido un error",'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-        //console.log(err.error.message)
+        Swal.fire({
+          icon: 'error',
+          title: 'Ha ocurrido un error',
+          text:'' + err.error.message,
+          showConfirmButton: false,
+          timer: 1500
+        });
         this.ruta.navigate(['portfolio'])
       })
     }

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { TokenStorageService } from 'src/app/services/auth/token-storage.service';
-import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
     private auth: AuthService,
     private token: TokenStorageService,
     private ruta:Router,
-    private toastr:ToastrService
   ) { 
     this.formlogin=this.fb.group(
       {
@@ -58,10 +57,22 @@ export class LoginComponent implements OnInit {
         this.nombreUsuario = this.token.getUser().username;
         //console.log("DATA: " + JSON.stringify(data));
         this.ruta.navigate(['/portfolio'])
-        this.toastr.success("Bienvenido : " + this.nombreUsuario ,'Inicio de sesión OK',{timeOut:3000,positionClass:'toast-top-full-width'});
+        Swal.fire({
+          icon: 'success',
+          title: 'Bienvenido: ' + this.nombreUsuario,
+          text: 'Inicio de sesión Correcto',
+          showConfirmButton: false,
+          timer: 3000
+        })
       },
       error: err => {
-        this.toastr.error("Error al iniciar sesión, verifique sus credenciales",'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
+        Swal.fire({
+          icon: 'error',
+          title: 'Error de inicio de Sesión',
+          text: 'Por favor, verifique sus credenciales',
+          showConfirmButton: false,
+          timer: 3000
+        })
         //console.log(err.error.message)
         this.isLoginFailed = true;
       }

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Education } from 'src/app/models/education';
 import { EducationService } from 'src/app/services/education.service';
-import { ToastrService } from 'ngx-toastr'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -18,8 +18,7 @@ export class NewEducationComponent implements OnInit {
   constructor(
     private fb:FormBuilder,
     private educationServ:EducationService,
-    private ruta:Router,
-    private toastr:ToastrService
+    private ruta:Router
   ) {
       this.newEducationForm = this.fb.group(
         {
@@ -72,11 +71,21 @@ export class NewEducationComponent implements OnInit {
     );
     this.educationServ.save(personid, education)
     .subscribe(data=>{
-      this.toastr.success("Educación creada correctamente",'OK',{timeOut:3000,positionClass:'toast-top-full-width'});
+      Swal.fire({
+        icon: 'success',
+        text: 'Creado correctamente',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.ruta.navigate(['portfolio']);
     }, err =>{
-      this.toastr.error("Ha ocurrido un error",'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      //console.log(err.error.message);
+      Swal.fire({
+        icon: 'error',
+        title: 'Ha ocurrido un error',
+        text:'' + err.error.message,
+        showConfirmButton: false,
+        timer: 1500
+      });
       this.ruta.navigate(['portfolio']);
     });
   }

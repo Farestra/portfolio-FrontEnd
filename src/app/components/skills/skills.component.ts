@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from 'src/app/services/auth/token-storage.service';
 import { Skill } from 'src/app/models/skill';
 import { SkillService } from 'src/app/services/skill.service';
-import { ToastrService } from 'ngx-toastr'
-import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-skills',
@@ -17,7 +16,6 @@ export class SkillsComponent implements OnInit {
   constructor(
     private skillService:SkillService,
     private token:TokenStorageService,
-    private toastr:ToastrService
     ) { }
 
   ngOnInit(): void {
@@ -29,8 +27,13 @@ export class SkillsComponent implements OnInit {
     this.skillService.list(personid).subscribe(data=>{
       this.skills=data;
     }, err => {
-      this.toastr.error("No se pudieron cargar las habilidades",'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      //console.log(err.error.message);
+      Swal.fire({
+        icon: 'error',
+        title: 'No se pudo obtener la información',
+        text: ''+ err.error.message,
+        showConfirmButton: false,
+        timer: 1500
+      })
     })
   }
 
@@ -38,10 +41,19 @@ export class SkillsComponent implements OnInit {
     if(id != undefined){
       this.skillService.delete(id).subscribe(data=>{
         this.loadSkill();
-        this.toastr.success("Eliminada habilidad con el id:" + id, 'Eliminado',{timeOut:3000,positionClass:'toast-top-full-width'});
+        Swal.fire({
+          icon: 'success',
+          text: 'Eliminado correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        });
       }, err =>{
-        this.toastr.error("No se pudo eliminar el id:" + id, 'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-        //console.log(err.error.message);
+        Swal.fire({
+          icon: 'error',
+          text: 'No se pudo eliminar la habilidad',
+          showConfirmButton: false,
+          timer: 1500
+        });
       })
     }
   }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Education } from 'src/app/models/education';
 import { TokenStorageService } from 'src/app/services/auth/token-storage.service';
 import { EducationService } from 'src/app/services/education.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-education',
@@ -17,7 +17,6 @@ export class EducationComponent implements OnInit {
   constructor(
     private token:TokenStorageService,
     private educationServ:EducationService,
-    private toastr:ToastrService,
     private ruta:Router
     ) { }
 
@@ -39,10 +38,20 @@ export class EducationComponent implements OnInit {
     if(id != undefined){
       this.educationServ.delete(id).subscribe(data=>{
         this.loadEducation();
-        this.toastr.success("Se Ha eliminado correctamente el elemento con id " + id, 'Borrado exitoso',{timeOut:3000,positionClass:'toast-top-center'});
+        Swal.fire({
+          icon: 'success',
+          text: 'Eliminado correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }, err => {
-        this.toastr.error("no se pudo eliminar el id: " + id, 'Error',{timeOut:3000,positionClass:'toast-top-center'});
-        //console.log(err.error.message)
+        Swal.fire({
+          icon: 'error',
+          title: 'Ha ocurrido un error',
+          text:'' + err.error.message,
+          showConfirmButton: false,
+          timer: 1500
+        });
       })
     }
   }

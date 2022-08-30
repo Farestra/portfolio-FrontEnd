@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Achievement } from 'src/app/models/achievement';
 import { AchievementService } from 'src/app/services/achievement.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -18,7 +18,6 @@ export class EditAchievementComponent implements OnInit {
     private fb:FormBuilder,
     private achievementServ:AchievementService,
     private activRouter:ActivatedRoute,
-    private toastr:ToastrService,
     private ruta:Router
   ) { }
 
@@ -33,8 +32,13 @@ export class EditAchievementComponent implements OnInit {
         url:[this.achievementUpd.url,Validators.required]
       });
     }, err =>{
-      this.toastr.error("Ha ocurrido un error",'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      //console.log(err.error.message)
+      Swal.fire({
+        icon: 'error',
+        title: 'Ha ocurrido un error',
+        text:'' + err.error.message,
+        showConfirmButton: false,
+        timer: 1500
+      });
       this.ruta.navigate(['portfolio'])
     })
   }
@@ -60,11 +64,21 @@ export class EditAchievementComponent implements OnInit {
     );
     this.achievementServ.update(id, achievement)
     .subscribe(data=>{
-      this.toastr.success("Proyecto actualizado correctamente",'OK',{timeOut:3000,positionClass:'toast-top-full-width'});
+      Swal.fire({
+        icon: 'success',
+        text: 'Actualizado correctamente',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.ruta.navigate(['portfolio'])
     }, err =>{
-      this.toastr.error("Ha ocurrido un error",'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      //console.log(err.error.message )
+      Swal.fire({
+        icon: 'error',
+        title: 'Ha ocurrido un error',
+        text:'' + err.error.message,
+        showConfirmButton: false,
+        timer: 1500
+      });
       this.ruta.navigate(['portfolio'])
     });
   }

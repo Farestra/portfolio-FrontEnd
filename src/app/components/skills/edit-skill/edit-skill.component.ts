@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Skill } from 'src/app/models/skill';
 import { SkillService } from 'src/app/services/skill.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-skill',
@@ -17,7 +17,6 @@ export class EditSkillComponent implements OnInit {
     private fb:FormBuilder,
     private skillService:SkillService,
     private activRouter:ActivatedRoute,
-    private toastr:ToastrService,
     private ruta:Router
   ) { 
 
@@ -33,8 +32,12 @@ export class EditSkillComponent implements OnInit {
         progress:[this.skillUpd.progress,Validators.required]
       });
     }, err =>{
-      this.toastr.error("Ha ocurrido un error",'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      //console.log(err.error.message)
+      Swal.fire({
+        icon: 'error',
+        text: 'Ha ocurrido un error obteniendo la información',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.ruta.navigate(['portfolio'])
     });
   }
@@ -57,10 +60,20 @@ export class EditSkillComponent implements OnInit {
     );
     this.skillService.update(id, skill)
     .subscribe(data=>{
-      this.toastr.success("Habilidad actualizada correctamente",'OK',{timeOut:3000,positionClass:'toast-top-full-width'});
+      Swal.fire({
+        icon: 'success',
+        text: 'Actualizado correctamente',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.ruta.navigate(['portfolio'])
     }, err =>{
-      this.toastr.error("Ha ocurrido un error",'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
+      Swal.fire({
+        icon: 'error',
+        text: 'Ha ocurrido un error obteniendo la información',
+        showConfirmButton: false,
+        timer: 1500
+      })
       //console.log(err.error.message)
       this.ruta.navigate(['portfolio'])
     });

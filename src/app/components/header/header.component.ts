@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/auth/token-storage.service';
 import { ProfileService } from 'src/app/services/profile.service';
-import { ToastrService } from 'ngx-toastr';
 import { CompanyService } from 'src/app/services/company.service';
 import { SchoolService } from 'src/app/services/school.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-header',
@@ -23,7 +23,6 @@ export class HeaderComponent implements OnInit {
   constructor(private profileServ:ProfileService,
     private token: TokenStorageService,
     private ruta:Router,
-    private toastr:ToastrService,
     private companyServ:CompanyService,
     private schoolServ:SchoolService
     ) { }
@@ -44,8 +43,13 @@ export class HeaderComponent implements OnInit {
     this.schoolServ.list(this.personid).subscribe(data=>{
       this.schools=data;
     }, err=>{
-      this.toastr.error("Ha ocurrido un error obteniendo la lista de última escuela", 'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      //console.log(err.error.message);
+      Swal.fire({
+        icon: 'error',
+        title: 'Ha ocurrido un error',
+        text:'' + err.error.message,
+        showConfirmButton: false,
+        timer: 1500
+      });
     })
   }
 
@@ -53,16 +57,26 @@ export class HeaderComponent implements OnInit {
     this.companyServ.list(this.personid).subscribe(data=>{
       this.companys=data;
     }, err=>{
-      this.toastr.error("Ha ocurrido un error obteniendo la lista de última compañía", 'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      //console.log(err.error.message);
+      Swal.fire({
+        icon: 'error',
+        title: 'Ha ocurrido un error',
+        text:'' + err.error.message,
+        showConfirmButton: false,
+        timer: 1500
+      });
     })
   }
   obtenerDatos(){
     this.profileServ.list().subscribe(data=>{
       this.miPortfolio=(data);
     }, err=>{
-      this.toastr.error("Ha ocurrido un error obteniendo la lista de última escuela", 'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      //console.log(err.error.message);
+      Swal.fire({
+        icon: 'error',
+        title: 'Ha ocurrido un error',
+        text:'' + err.error.message,
+        showConfirmButton: false,
+        timer: 1500
+      });
     })
   }
 
@@ -73,23 +87,43 @@ export class HeaderComponent implements OnInit {
 
   deleteSchool(id:number){
     this.schoolServ.delete(id).subscribe(data=>{
-      this.toastr.success("Eliminada correctamente la entrada con id: " + id, 'Ok',{timeOut:3000,positionClass:'toast-top-full-width'});
+      Swal.fire({
+        icon: 'success',
+        text: 'Eliminado correctamente',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.loadSchools();
       this.reloadComponent();
     }, err=>{
-      this.toastr.error("Ha ocurrido un error eliminando la entrada school con id: " + id, 'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      //console.log(err.error.message);
+      Swal.fire({
+        icon: 'error',
+        title: 'Ha ocurrido un error',
+        text:'' + err.error.message,
+        showConfirmButton: false,
+        timer: 1500
+      });
     })
   }
 
   deleteCompany(id:number){
     this.companyServ.delete(id).subscribe(data=>{
-      this.toastr.success("Eliminada correctamente la entrada con id: " + id, 'Ok',{timeOut:3000,positionClass:'toast-top-full-width'});
+      Swal.fire({
+        icon: 'success',
+        text: 'Eliminado correctamente',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.loadCompanys();
       this.reloadComponent();
     }, err=>{
-      this.toastr.error("Ha ocurrido un error eliminando la entrada school con id: " + id, 'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      //console.log(err.error.message);
+      Swal.fire({
+        icon: 'error',
+        title: 'Ha ocurrido un error',
+        text:'' + err.error.message,
+        showConfirmButton: false,
+        timer: 1500
+      });
     })
   }
 

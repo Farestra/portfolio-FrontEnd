@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Experience } from 'src/app/models/experience';
 import { ExperienceService } from 'src/app/services/experience.service';
 import { TokenStorageService } from 'src/app/services/auth/token-storage.service';
-import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-experience',
@@ -14,8 +15,7 @@ export class ExperienceComponent implements OnInit {
   isAdmin:boolean = false;
   constructor(
     private token:TokenStorageService,
-    private experienceServ:ExperienceService,
-    private toastr:ToastrService
+    private experienceServ:ExperienceService
     ) { }
 
   ngOnInit(): void {
@@ -36,8 +36,13 @@ export class ExperienceComponent implements OnInit {
       this.experienceServ.delete(id).subscribe(data =>{
         this.loadExperience();
       }, err => {
-        this.toastr.error("No se pudo eliminar el id:" + id, 'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-        //console.log(err.error.message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Ha ocurrido un error',
+          text:'' + err.error.message,
+          showConfirmButton: false,
+          timer: 1500
+        });
       })
     }
   }

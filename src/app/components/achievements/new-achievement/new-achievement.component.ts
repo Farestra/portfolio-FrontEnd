@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Achievement } from 'src/app/models/achievement';
 import { AchievementService } from 'src/app/services/achievement.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -19,8 +19,7 @@ export class NewAchievementComponent implements OnInit {
     private fb:FormBuilder,
     private achievementServ:AchievementService,
     private ruta:Router,
-    private acRuta:ActivatedRoute,
-    private toastr:ToastrService
+    private acRuta:ActivatedRoute
   ) { 
     this.newAchievementForm = this.fb.group({
       name:['',Validators.required],
@@ -54,11 +53,21 @@ export class NewAchievementComponent implements OnInit {
     );
     this.achievementServ.save(personid, achievement)
     .subscribe(data=>{
-      this.toastr.success("Proyecto creado correctamente",'OK',{timeOut:3000,positionClass:'toast-top-full-width'});
+      Swal.fire({
+        icon: 'success',
+        text: 'Creado correctamente',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.ruta.navigate(['portfolio']);
     }, err =>{
-      this.toastr.error("Ha ocurrido un error" ,'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      //console.log(err.error.message );
+      Swal.fire({
+        icon: 'error',
+        title: 'Ha ocurrido un error',
+        text:'' + err.error.message,
+        showConfirmButton: false,
+        timer: 1500
+      });
       this.ruta.navigate(['portfolio']);
     });
   }
