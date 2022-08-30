@@ -58,7 +58,7 @@ export class NewAchievementComponent implements OnInit {
       this.ruta.navigate(['portfolio']);
     }, err =>{
       this.toastr.error("Ha ocurrido un error" ,'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      console.log(err.error.message );
+      //console.log(err.error.message );
       this.ruta.navigate(['portfolio']);
     });
   }

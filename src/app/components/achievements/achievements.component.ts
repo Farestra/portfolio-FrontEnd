@@ -38,7 +38,7 @@ export class AchievementsComponent implements OnInit {
         this.toastr.success("Se Ha eliminado correctamente el elemento con id " + id, 'Borrado exitoso',{timeOut:3000,positionClass:'toast-top-center'});
       }, err => {
         this.toastr.error("no se pudo eliminar el id: " + id, 'Error',{timeOut:3000,positionClass:'toast-top-center'});
-        console.log(err.error.message)
+        //console.log(err.error.message)
       })
     }
   }

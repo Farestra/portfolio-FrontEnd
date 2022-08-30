@@ -56,13 +56,13 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.token.getUser().roles;
         this.nombreUsuario = this.token.getUser().username;
-        console.log("DATA: " + JSON.stringify(data));
+        //console.log("DATA: " + JSON.stringify(data));
         this.ruta.navigate(['/portfolio'])
         this.toastr.success("Bienvenido : " + this.nombreUsuario ,'Inicio de sesión OK',{timeOut:3000,positionClass:'toast-top-full-width'});
       },
       error: err => {
         this.toastr.error("Error al iniciar sesión, verifique sus credenciales",'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-        console.log(err.error.message)
+        //console.log(err.error.message)
         this.isLoginFailed = true;
       }
     });

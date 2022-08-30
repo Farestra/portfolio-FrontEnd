@@ -30,7 +30,7 @@ export class SkillsComponent implements OnInit {
       this.skills=data;
     }, err => {
       this.toastr.error("No se pudieron cargar las habilidades",'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      console.log(err.error.message);
+      //console.log(err.error.message);
     })
   }
 
@@ -41,7 +41,7 @@ export class SkillsComponent implements OnInit {
         this.toastr.success("Eliminada habilidad con el id:" + id, 'Eliminado',{timeOut:3000,positionClass:'toast-top-full-width'});
       }, err =>{
         this.toastr.error("No se pudo eliminar el id:" + id, 'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-        console.log(err.error.message);
+        //console.log(err.error.message);
       })
     }
   }

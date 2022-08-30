@@ -37,7 +37,7 @@ export class ExperienceComponent implements OnInit {
         this.loadExperience();
       }, err => {
         this.toastr.error("No se pudo eliminar el id:" + id, 'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-        console.log(err.error.message);
+        //console.log(err.error.message);
       })
     }
   }

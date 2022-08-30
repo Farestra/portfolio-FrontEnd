@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
     this.obtenerDatos();
     this.loadCompanys();
     this.loadSchools();
-    console.log(this.token.getUser());
+    //console.log(this.token.getUser());
     this.isAdmin = this.token.isLoggedAdmin();
     
   }
@@ -45,7 +45,7 @@ export class HeaderComponent implements OnInit {
       this.schools=data;
     }, err=>{
       this.toastr.error("Ha ocurrido un error obteniendo la lista de última escuela", 'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      console.log(err.error.message);
+      //console.log(err.error.message);
     })
   }
 
@@ -54,7 +54,7 @@ export class HeaderComponent implements OnInit {
       this.companys=data;
     }, err=>{
       this.toastr.error("Ha ocurrido un error obteniendo la lista de última compañía", 'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      console.log(err.error.message);
+      //console.log(err.error.message);
     })
   }
   obtenerDatos(){
@@ -62,7 +62,7 @@ export class HeaderComponent implements OnInit {
       this.miPortfolio=(data);
     }, err=>{
       this.toastr.error("Ha ocurrido un error obteniendo la lista de última escuela", 'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      console.log(err.error.message);
+      //console.log(err.error.message);
     })
   }
 
@@ -78,7 +78,7 @@ export class HeaderComponent implements OnInit {
       this.reloadComponent();
     }, err=>{
       this.toastr.error("Ha ocurrido un error eliminando la entrada school con id: " + id, 'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      console.log(err.error.message);
+      //console.log(err.error.message);
     })
   }
 
@@ -89,7 +89,7 @@ export class HeaderComponent implements OnInit {
       this.reloadComponent();
     }, err=>{
       this.toastr.error("Ha ocurrido un error eliminando la entrada school con id: " + id, 'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      console.log(err.error.message);
+      //console.log(err.error.message);
     })
   }
 

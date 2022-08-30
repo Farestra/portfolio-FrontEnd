@@ -1,7 +1,8 @@
 {
   "projects": {
     "default": "portfolio-fdf2c",
-    "portfolio": "portfolio-9121a"
+    "portfolio": "portfolio-9121a",
+    "portfolio_dev": "portfolio-9121a"
   },
   "targets": {},
   "etags": {}

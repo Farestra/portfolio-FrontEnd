@@ -43,18 +43,18 @@ export class NewDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.schoolsv.list(this.personid).subscribe(data=>{
-      console.log(data.length);
+      //console.log(data.length);
       if(data.length===0){
         this.isSchool=false;
       } else {
         this.isSchool=true;
       }
     }, err =>{
-      console.log(err.error.message);
+      //console.log(err.error.message);
     });
 
     this.companysv.list(this.personid).subscribe(data=>{
-      console.log(data.length);
+      //console.log(data.length);
       if(data.length===0){
         this.isCompany=false;
       } else {
@@ -62,7 +62,7 @@ export class NewDetailsComponent implements OnInit {
       }
       
     }, err =>{
-      console.log(err.error.message);
+      //console.log(err.error.message);
     });
   }
 
@@ -113,7 +113,7 @@ export class NewDetailsComponent implements OnInit {
       this.ruta.navigate(['portfolio']);
     }, err =>{
       this.toastr.error("Ha ocurrido un error",'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      console.log(err.error.message);
+      //console.log(err.error.message);
       this.ruta.navigate(['portfolio']);
     });
   }

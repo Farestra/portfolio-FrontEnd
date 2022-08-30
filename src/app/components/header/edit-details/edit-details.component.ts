@@ -57,9 +57,9 @@ export class EditDetailsComponent implements OnInit {
     } else {
       this.ruta.navigate(['**'])
       this.toastr.error("Ha ocurrido un error, no se puede capturar el parámetro para la ruta: " + this.activRouter, 'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      console.log('no se puede capturar el parámetro: valor: ' + this.param + ' id: ' + this.id )
+      //console.log('no se puede capturar el parámetro: valor: ' + this.param + ' id: ' + this.id )
     }
-    console.log('El id obtenido es: '+ this.id + ' El parámetro obtenido es: ' + this.param);
+    //console.log('El id obtenido es: '+ this.id + ' El parámetro obtenido es: ' + this.param);
   }
 
   get sName(){return this.SchoolForm.get('s_name')};
@@ -79,7 +79,7 @@ export class EditDetailsComponent implements OnInit {
       })
     }, err => {
       this.toastr.error("Ha ocurrido un error ", 'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      console.log(err.error.message);
+      //console.log(err.error.message);
     })
   }
 
@@ -92,7 +92,7 @@ export class EditDetailsComponent implements OnInit {
       })
     }, err => {
       this.toastr.error("Ha ocurrido un error ", 'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      console.log(err.error.message);
+      //console.log(err.error.message);
     })
   }
 
@@ -113,7 +113,7 @@ export class EditDetailsComponent implements OnInit {
       this.ruta.navigate(['portfolio']);
     }, err =>{
       this.toastr.error("Ha ocurrido un error",'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      console.log(err.error.message);
+      //console.log(err.error.message);
       this.ruta.navigate(['portfolio']);
     });
   }
@@ -135,7 +135,7 @@ export class EditDetailsComponent implements OnInit {
       this.ruta.navigate(['portfolio']);
     }, err =>{
       this.toastr.error("Ha ocurrido un error",'Error',{timeOut:3000,positionClass:'toast-top-full-width'});
-      console.log(err.error.message);
+      //console.log(err.error.message);
       this.ruta.navigate(['portfolio']);
     });
   }
