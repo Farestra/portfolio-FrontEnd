@@ -58,4 +58,14 @@ export class SkillsComponent implements OnInit {
     }
   }
 
+  verifySkill(progress:number){
+    if(progress<25){
+      return 'bg-warning';
+    } else if(progress>25 && progress<=60){
+      return ''
+    } else{
+      return 'bg-success'
+    }
+  }
+
 }

@@ -20,12 +20,13 @@
               <h4 class="mb-0">{{skill.name}}</h4>
               <div class="progress">
                 <div
-                  class="progress-bar progress-bar-striped"
+                  class="progress-bar progress-bar-striped progress-bar-animated"
                   role="progressbar"
                   style="width: {{ skill.progress }}%"
                   attr.aria-valuenow="{{ skill.progress }}"
                   aria-valuemin="0"
                   aria-valuemax="100"
+                  [ngClass]="verifySkill(skill.progress)"
                 ></div>
               </div>
             </div>
