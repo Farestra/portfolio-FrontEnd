@@ -45,9 +45,12 @@
     <button
       type="submit"
       class="btn btn-primary"
-      *ngIf="!(Password?.errors || Username?.errors)"
+      *ngIf="!(Password?.errors || Username?.errors) && btnEnabled"
     >
       Enviar
     </button>
+    <p *ngIf="!(btnEnabled)">
+      Iniciando Sesión por favor aguarde un momento...
+    </p>
   </form>
 </div>

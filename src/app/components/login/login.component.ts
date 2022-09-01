@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   roles: string[] = [];
+  btnEnabled:boolean = true
   constructor(
     private fb:FormBuilder,
     private auth: AuthService,
@@ -46,6 +47,14 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.btnEnabled = false;
+    Swal.fire({
+      icon: 'info',
+      title: 'Verificando credenciales:',
+      text: 'Por favor aguarde',
+      showConfirmButton: false,
+      timer: 1000
+    })
     const { username, password } = this.formlogin.value;
     this.auth.login(username, password).subscribe({
       next: data => {
@@ -55,14 +64,13 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.token.getUser().roles;
         this.nombreUsuario = this.token.getUser().username;
-        //console.log("DATA: " + JSON.stringify(data));
         this.ruta.navigate(['/portfolio'])
         Swal.fire({
           icon: 'success',
           title: 'Bienvenido: ' + this.nombreUsuario,
           text: 'Inicio de sesión Correcto',
           showConfirmButton: false,
-          timer: 3000
+          timer: 1500
         })
       },
       error: err => {
@@ -71,9 +79,9 @@ export class LoginComponent implements OnInit {
           title: 'Error de inicio de Sesión',
           text: 'Por favor, verifique sus credenciales',
           showConfirmButton: false,
-          timer: 3000
+          timer: 1500
         })
-        //console.log(err.error.message)
+        this.btnEnabled = true
         this.isLoginFailed = true;
       }
     });
